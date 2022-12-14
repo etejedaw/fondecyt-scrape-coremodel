@@ -3,6 +3,7 @@ import { MongoDb } from "./database/";
 import Config from "./config/config";
 import ConfigEnum from "./config/config.enum";
 import Winston from "./helpers/logger/winston/winston";
+import { mongodbConfig } from "./config/mongodb.config";
 
 async function main(): Promise<void> {
 	const config = new Config();
@@ -14,12 +15,7 @@ async function main(): Promise<void> {
 		server.listen(serverPort);
 		winston.info(`Server connected on port ${serverPort}`);
 
-		const mongoDb = new MongoDb({
-			DB_PORT: config.get(ConfigEnum.DB_PORT),
-			DB_HOST: config.get(ConfigEnum.DB_HOST),
-			DB_USERNAME: config.get(ConfigEnum.DB_USERNAME),
-			DB_PASSWORD: config.get(ConfigEnum.DB_PASSWORD)
-		});
+		const mongoDb = new MongoDb(mongodbConfig);
 		await mongoDb.connect();
 		winston.info(
 			`Database connected on port ${config.get(ConfigEnum.DB_PORT)}`

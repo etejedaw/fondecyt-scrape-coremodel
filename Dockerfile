@@ -16,4 +16,4 @@ WORKDIR "/usr/app"
 COPY package*.json ./
 RUN npm install --omit=dev
 COPY --from=builder "/usr/app/dist" "./dist"
-RUN npm run start:prod
+CMD [ "node","dist/app" ]

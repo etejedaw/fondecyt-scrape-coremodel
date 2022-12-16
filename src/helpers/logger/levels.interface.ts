@@ -1,4 +1,4 @@
-interface LoggerInterface {
+interface LevelsInterface {
 	fatal?: (message: string, data?: string) => void;
 	error: (message: string, data?: string) => void;
 	warn: (message: string, data?: string) => void;
@@ -9,4 +9,4 @@ interface LoggerInterface {
 	silly?: (message: string, data?: string) => void;
 }
 
-export default LoggerInterface;
+export default LevelsInterface;

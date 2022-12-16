@@ -1,8 +1,8 @@
-import LoggerInterface from "../logger.interface";
+import LevelsInterface from "../levels.interface";
 import winston from "winston";
 import { AbstractConfigSetLevels } from "winston/lib/winston/config";
 
-class Winston implements LoggerInterface {
+class Winston implements LevelsInterface {
 	#winstonLogger: winston.Logger;
 
 	constructor(environment: string) {
